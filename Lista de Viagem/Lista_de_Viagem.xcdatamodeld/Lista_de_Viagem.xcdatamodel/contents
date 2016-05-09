@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="Cidade" representedClassName=".Cidade" syncable="YES">
+        <attribute name="nomeCidade" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qtdDias" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="itens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="cidade" inverseEntity="Item" syncable="YES"/>
+    </entity>
+    <entity name="Item" representedClassName=".Item" syncable="YES">
+        <attribute name="nomeItem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantidade" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cidade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cidade" inverseName="itens" inverseEntity="Cidade" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Cidade" positionX="162" positionY="-45" width="128" height="88"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="88"/>
+    </elements>
+</model>
