@@ -78,8 +78,8 @@ class AdcNovoItemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItensCell", forIndexPath: indexPath) as! ItensTableViewCell
-//        cell.nomeItem.text = ""
-//        cell.qtdItem.text = ""
+            cell.nomeItem.text = ""
+            cell.qtdItem.text = ""
         
         print("Selecionou a cidade : \(cidade.itens?.count)")
         if(cidade.itens?.count != 0){
@@ -89,19 +89,11 @@ class AdcNovoItemTableViewController: UITableViewController {
                 cell.nomeItem.text = itensArray![indexPath.row].nomeItem
                 cell.qtdItem.text = itensArray![indexPath.row].quantidade
                 cell.textLabel?.userInteractionEnabled = true
-                cell.accessoryType = .DisclosureIndicator
-            
         
             }
         }
         else {
             noItens()
-//            cell.textLabel?.hidden = false
-//            //cell.textLabel?.text = "Não há itens registrados"
-//            cell.textLabel?.textColor = UIColor.grayColor()
-//            cell.textLabel?.textAlignment = NSTextAlignment.Center
-//            tableView.userInteractionEnabled = true
-//            cell.accessoryType = .None
         }
         
         return cell
@@ -139,7 +131,7 @@ class AdcNovoItemTableViewController: UITableViewController {
         alertaNovoItem.addTextFieldWithConfigurationHandler { (textField) -> Void in
             qtdTF = textField
             textField.placeholder = "Quantidade"
-            textField.keyboardType = .Default
+            textField.keyboardType = .NumberPad
         }
         
         alertaNovoItem.view.layer.shadowColor = UIColor.blackColor().CGColor
