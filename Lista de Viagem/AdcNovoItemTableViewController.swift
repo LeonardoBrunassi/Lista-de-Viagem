@@ -78,8 +78,8 @@ class AdcNovoItemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItensCell", forIndexPath: indexPath) as! ItensTableViewCell
-        cell.nomeItem.text = ""
-        cell.qtdItem.text = ""
+//        cell.nomeItem.text = ""
+//        cell.qtdItem.text = ""
         
         print("Selecionou a cidade : \(cidade.itens?.count)")
         if(cidade.itens?.count != 0){
@@ -157,7 +157,7 @@ class AdcNovoItemTableViewController: UITableViewController {
                 self.item.nomeItem = nomeItemTF.text!
                 self.item.quantidade = qtdTF.text!
                 self.item.cidade = self.cidade
-               
+                self.tutoView.removeFromSuperview()
             }
             ItemManager.sharedInstance.salvar()
             self.reloadData()
@@ -171,22 +171,21 @@ class AdcNovoItemTableViewController: UITableViewController {
         self.reloadData()
     }
     
-    func reloadData(){
-        itensArray = ItemManager.sharedInstance.Item()
-        tableView.reloadData()
-    }
-    
     
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete{
             ItemManager.sharedInstance.deletar(self.itensArray![indexPath.row])
             ItemManager.sharedInstance.salvar()
-            tableView.reloadData()
             reloadData()
         }
     }
 
+    
+    func reloadData(){
+        itensArray = ItemManager.sharedInstance.Item()
+        tableView.reloadData()
+    }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
