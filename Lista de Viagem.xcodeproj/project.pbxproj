@@ -25,6 +25,7 @@
 		B224B6C01CB42AB50049DBAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B224B6BF1CB42AB50049DBAC /* Assets.xcassets */; };
 		B224B6C31CB42AB50049DBAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B224B6C11CB42AB50049DBAC /* LaunchScreen.storyboard */; };
 		B224B6CD1CB446180049DBAC /* CidadeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B224B6CC1CB446180049DBAC /* CidadeTableViewCell.swift */; };
+		B285C9BF1CE5075700DD53EC /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B285C9BE1CE5075700DD53EC /* Tutorial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B224B6C21CB42AB50049DBAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B224B6C41CB42AB50049DBAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B224B6CC1CB446180049DBAC /* CidadeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CidadeTableViewCell.swift; sourceTree = "<group>"; };
+		B285C9BE1CE5075700DD53EC /* Tutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		B224B6A91CB42AB50049DBAC = {
 			isa = PBXGroup;
 			children = (
+				B285C9BE1CE5075700DD53EC /* Tutorial.swift */,
 				B20CFF621CB827E000392517 /* Persistência */,
 				B224B6B41CB42AB50049DBAC /* Lista de Viagem */,
 				B224B6B31CB42AB50049DBAC /* Products */,
@@ -195,6 +198,7 @@
 				B20CFF571CB6EF3100392517 /* AdcNovoItemTableViewController.swift in Sources */,
 				B20CFB7A1CB5A10D00392517 /* DesignableView.swift in Sources */,
 				B20CFF551CB6EDA500392517 /* MsgSemItens.swift in Sources */,
+				B285C9BF1CE5075700DD53EC /* Tutorial.swift in Sources */,
 				B20CFF661CB82A6500392517 /* CoreDataPersistencia.swift in Sources */,
 				B224B6BE1CB42AB50049DBAC /* Lista_de_Viagem.xcdatamodeld in Sources */,
 			);

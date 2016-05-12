@@ -12,7 +12,6 @@ class ItensTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nomeItem: UILabel!
     @IBOutlet weak var qtdItem: UILabel!
-    @IBOutlet weak var msgSemItens: UILabel!
     
     
     override func awakeFromNib() {

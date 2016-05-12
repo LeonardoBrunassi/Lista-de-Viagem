@@ -14,6 +14,7 @@ class AdcNovoItemTableViewController: UITableViewController {
     var item : Item!
     var cidade : Cidade!
     var itensArray : Array<Item>?
+    var tutoView: UIView!
     
     
     
@@ -21,6 +22,7 @@ class AdcNovoItemTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tutoView = Tutorial(frame: CGRectMake(0, 0, tableView.frame.width, tableView.frame.height))
         tableView.delegate = self
         tableView.dataSource = self
         if(cidade.itens != nil) {
@@ -58,6 +60,10 @@ class AdcNovoItemTableViewController: UITableViewController {
         return 1
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        noItens()
+    }
 
   
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,13 +80,11 @@ class AdcNovoItemTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItensCell", forIndexPath: indexPath) as! ItensTableViewCell
         cell.nomeItem.text = ""
         cell.qtdItem.text = ""
-        cell.msgSemItens.text = ""
         
         print("Selecionou a cidade : \(cidade.itens?.count)")
         if(cidade.itens?.count != 0){
             
             if (itensArray![indexPath.row].cidade?.nomeCidade == cidade.nomeCidade) {
-                cell.msgSemItens.hidden = false
                 cell.textLabel?.hidden = true
                 cell.nomeItem.text = itensArray![indexPath.row].nomeItem
                 cell.qtdItem.text = itensArray![indexPath.row].quantidade
@@ -88,18 +92,35 @@ class AdcNovoItemTableViewController: UITableViewController {
                 cell.accessoryType = .DisclosureIndicator
             
         
+            }
         }
-        }else {
-            cell.msgSemItens.hidden = true
-            cell.textLabel?.hidden = false
-            cell.textLabel?.text = "Não há itens registrados"
-            cell.textLabel?.textColor = UIColor.grayColor()
-            cell.textLabel?.textAlignment = NSTextAlignment.Center
-            tableView.userInteractionEnabled = true
-            cell.accessoryType = .None
+        else {
+            noItens()
+//            cell.textLabel?.hidden = false
+//            //cell.textLabel?.text = "Não há itens registrados"
+//            cell.textLabel?.textColor = UIColor.grayColor()
+//            cell.textLabel?.textAlignment = NSTextAlignment.Center
+//            tableView.userInteractionEnabled = true
+//            cell.accessoryType = .None
         }
         
         return cell
+    }
+    
+    func noItens() {
+        if !self.view.subviews.contains(tutoView) {
+            if itensArray!.isEmpty {
+                self.tableView.scrollEnabled = false
+                self.view.addSubview(tutoView)
+            }
+        }
+            
+        else {
+            if !itensArray!.isEmpty {
+                self.tableView.scrollEnabled = true
+                tutoView.removeFromSuperview()
+            }
+        }
     }
     
     
@@ -139,6 +160,7 @@ class AdcNovoItemTableViewController: UITableViewController {
                
             }
             ItemManager.sharedInstance.salvar()
+            self.reloadData()
             CidadeManager.sharedInstance.salvar()
         }
         
@@ -160,6 +182,7 @@ class AdcNovoItemTableViewController: UITableViewController {
         if editingStyle == UITableViewCellEditingStyle.Delete{
             ItemManager.sharedInstance.deletar(self.itensArray![indexPath.row])
             ItemManager.sharedInstance.salvar()
+            tableView.reloadData()
             reloadData()
         }
     }

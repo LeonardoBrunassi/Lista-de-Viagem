@@ -84,8 +84,8 @@ class ViewController: UITableViewController {
         if editingStyle == UITableViewCellEditingStyle.Delete{
             CidadeManager.sharedInstance.deletar(self.cidadeArray![indexPath.row])
             CidadeManager.sharedInstance.salvar()
-            ItemManager.sharedInstance.deletarTudo()
-            ItemManager.sharedInstance.salvar()
+//            ItemManager.sharedInstance.deletar(self.itensArray![indexPath.row])
+//            ItemManager.sharedInstance.salvar()
             tableView.reloadData()
             reloadData()
         }
